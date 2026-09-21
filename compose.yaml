@@ -1,0 +1,53 @@
+name: qingshitong-r0
+
+services:
+  qingshitong:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      QST_APP_ENV: ${QST_APP_ENV:-public_demo}
+      QST_DB_PATH: /app/data/qingshitong.db
+      QST_LLM_PROVIDER: ${QST_LLM_PROVIDER:-openrouter}
+      QST_LLM_BASE_URL: ${QST_LLM_BASE_URL:-https://openrouter.ai/api/v1}
+      QST_LLM_MODEL: ${QST_LLM_MODEL:-nex-agi/nex-n2.5-mini:free}
+      QST_LLM_API_KEY_FILE: /run/secrets/qst_llm_api_key
+      QST_LLM_TIMEOUT_SECONDS: ${QST_LLM_TIMEOUT_SECONDS:-20}
+      QST_LLM_RUN_TIMEOUT_SECONDS: ${QST_LLM_RUN_TIMEOUT_SECONDS:-45}
+      QST_LLM_MAX_TURNS: ${QST_LLM_MAX_TURNS:-2}
+      QST_LLM_MAX_OUTPUT_TOKENS: ${QST_LLM_MAX_OUTPUT_TOKENS:-320}
+      QST_LLM_RETRY_COUNT: ${QST_LLM_RETRY_COUNT:-1}
+      QST_LLM_RESPONSES_REQUEST_VARIANT: ${QST_LLM_RESPONSES_REQUEST_VARIANT:-standard}
+      QST_LLM_CHAT_REASONING_EFFORT: ${QST_LLM_CHAT_REASONING_EFFORT:-}
+      QST_EMBEDDING_CACHE_DIR: /app/models/embeddings
+    secrets:
+      - qst_llm_api_key
+    volumes:
+      - qst_data:/app/data
+      - ./models/embeddings:/app/models/embeddings:ro
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 256
+    mem_limit: 3g
+    cpus: 2.0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health/live', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+volumes:
+  qst_data:
+
+secrets:
+  qst_llm_api_key:
+    file: ${QST_LLM_API_KEY_FILE:-./deploy/qst_llm_api_key.empty}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-19T21:30:00+08:00",
+  "title": "Design System: 庆事通",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "石墨墨色", "canonical": "#17262b", "tonalRamp": ["#17262b", "#28383d", "#405155", "#637276", "#899596", "#b5c0bd", "#d8dfdb", "#f4f6f3"] },
+      "teal": { "role": "primary", "displayName": "登记青绿", "canonical": "#0f766e", "tonalRamp": ["#073b38", "#075851", "#0f766e", "#32958b", "#63b5aa", "#9bd2c9", "#d9eee9", "#f2fbf8"] },
+      "amber": { "role": "secondary", "displayName": "边界琥珀", "canonical": "#a66a18", "tonalRamp": ["#4b2a06", "#71440c", "#a66a18", "#c58e3d", "#ddb36b", "#f0d49c", "#fff0d3", "#fff9ed"] },
+      "paper": { "role": "neutral", "displayName": "纸张白", "canonical": "#ffffff", "tonalRamp": ["#d8dfdb", "#e9eeeb", "#f4f6f3", "#f8faf8", "#fbfcfb", "#ffffff", "#ffffff", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "工作台标题", "purpose": "用于主要任务标题，克制而清晰。" },
+      "label": { "displayName": "流程标签", "purpose": "用于状态、编号、来源和辅助说明。" }
+    },
+    "shadows": [
+      { "name": "mascot-note", "value": "0 8px 20px rgba(23, 38, 43, .08)", "purpose": "仅用于可移动的庆小通提示。" }
+    ],
+    "motion": [
+      { "name": "state-transition", "value": "180ms ease", "purpose": "用于焦点、悬停和当前路径状态变化。" },
+      { "name": "answer-reveal", "value": "320ms ease-out", "purpose": "用于查询回答从流式状态进入可读内容。" }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "760px" },
+      { "name": "rail-collapse", "value": "1050px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "用于查询、运行预检和提交等主要推进动作。",
+      "html": "<button class=\"ds-btn-primary\">查事项 <span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:7px; min-height:38px; padding:0 13px; color:#fff; background:#17262b; border:1px solid transparent; border-radius:5px; font:800 11px/1 Aptos, sans-serif; transition:background 180ms ease, transform 180ms ease; } .ds-btn-primary:hover { background:#0f766e; transform:translateY(-1px); } .ds-btn-primary:focus-visible { outline:3px solid rgba(15,118,110,.28); outline-offset:3px; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "用于用自然语言描述要办理的校园事务。",
+      "html": "<label class=\"ds-search\"><span aria-hidden=\"true\">⌕</span><input placeholder=\"描述你要办理的事情\" /></label>",
+      "css": ".ds-search { display:flex; align-items:center; gap:10px; height:52px; padding:5px 14px; background:#f4f6f3; border:1px solid #c5d0ca; border-radius:6px; } .ds-search:focus-within { background:#fff; border-color:#0f766e; } .ds-search span { color:#0f766e; } .ds-search input { min-width:0; flex:1; color:#17262b; background:transparent; border:0; outline:0; font:400 13px/1.5 Aptos, sans-serif; }"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "state-chip",
+      "description": "用于表达当前状态，颜色只辅助文字。",
+      "html": "<span class=\"ds-chip\">已核验</span>",
+      "css": ".ds-chip { display:inline-flex; align-items:center; min-height:24px; padding:0 8px; color:#637276; background:#e9eeeb; border-radius:4px; font:750 10px/1.5 Aptos, sans-serif; } .ds-chip.is-live { color:#0f766e; background:#d9eee9; } .ds-chip.is-warn { color:#a66a18; background:#fff0d3; }"
+    },
+    {
+      "name": "Process Rail",
+      "kind": "custom",
+      "refersTo": "process-rail",
+      "description": "用编号和状态展示学生在办理任务中的位置。",
+      "html": "<ol class=\"ds-rail\"><li class=\"is-current\"><b>1</b><span>填写事项信息</span></li><li><b>2</b><span>准备办理材料</span></li></ol>",
+      "css": ".ds-rail { display:grid; gap:15px; margin:0; padding:0; list-style:none; } .ds-rail li { display:flex; align-items:center; gap:9px; color:#899596; font:400 11px/1.5 Aptos, sans-serif; } .ds-rail b { display:grid; place-items:center; width:22px; height:22px; color:#899596; border:1px solid #c5d0ca; border-radius:50%; font:700 10px/1 Aptos, sans-serif; } .ds-rail li.is-current { color:#17262b; font-weight:800; } .ds-rail li.is-current b { color:#fff; background:#0f766e; border-color:#0f766e; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "校园事务登记台",
+    "overview": "庆事通把校园事务当作一张需要被准确登记、核对和推进的工作单。视觉语言借鉴纸面登记台与流程谱：清晰的编号、细边界线、纵向步骤和少量状态色，让学生在高频查找和填写时可以快速扫描。整体气质是克制、可靠、安静而不冷漠。",
+    "keyCharacteristics": ["依据、步骤、任务状态共享同一条秩序线索", "以分隔线和留白建立层级", "学生端只展示业务语言和下一步", "移动端折叠为稳定的单列办理路径"],
+    "rules": [
+      { "name": "The Rare Accent Rule", "body": "青绿色只出现在当前路径、继续动作和明确的业务状态。", "section": "colors" },
+      { "name": "The Flat Workbench Rule", "body": "内容静止时依靠颜色层和边界线建立层级，阴影只服务于可移动提示。", "section": "elevation" }
+    ],
+    "dos": ["让查询、回答、依据、材料和状态共享同一套青绿色状态语义。", "使用边界线、编号和留白帮助学生扫描长内容。", "保持所有关键状态有文字。", "让移动端的主要操作保持稳定尺寸和单列顺序。"],
+    "donts": ["恢复深色大导航、营销式 Hero 或红色超大标题。", "用工程 ID、Trace、Publication 或 Provider 信息占用学生端内容。", "用大量同尺寸卡片、渐变或无意义的页面加载动画制造层次。", "把模拟边界藏起来。"]
+  }
+}

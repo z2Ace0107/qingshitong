@@ -1,0 +1,38 @@
+{
+  "schema_version": "mascot-asset-v1",
+  "id": "qing-xiaotong-companion",
+  "display_name": "庆小通",
+  "renderer": "raster",
+  "source": {
+    "kind": "original",
+    "license": "project-generated",
+    "attribution": "庆事通项目原创演示形象（项目图像生成流程）"
+  },
+  "canvas": {
+    "width": 64,
+    "height": 64,
+    "anchor": { "x": 0.5, "y": 1 },
+    "scale": 1
+  },
+  "asset": {
+    "src": "assets/mascot-companion.png",
+    "alt": "庆小通",
+    "sha256": "70186547ab9779b8255e8aaba157834b6021cb6ffac9684f010baffaa2078ac8"
+  },
+  "fallback": {
+    "src": "assets/mascot-companion.png",
+    "alt": "庆小通",
+    "sha256": "70186547ab9779b8255e8aaba157834b6021cb6ffac9684f010baffaa2078ac8"
+  },
+  "states": {
+    "idle": { "label": "待命" },
+    "clarifying": { "label": "等待澄清" },
+    "retrieving": { "label": "检索依据" },
+    "evidence_ready": { "label": "依据已就绪" },
+    "warning": { "label": "需要注意" },
+    "awaiting_confirmation": { "label": "等待确认" },
+    "simulated_success": { "label": "演示完成" },
+    "needs_reconfirmation": { "label": "需要重新确认" },
+    "degraded": { "label": "安全降级" }
+  }
+}

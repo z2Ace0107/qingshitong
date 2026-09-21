@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">庆小通</title>
+  <desc id="desc">庆事通的原创陪伴式状态提示形象</desc>
+  <path d="M29 24c-7-8-14-7-17-2 1 8 6 12 14 13M67 24c7-8 14-7 17-2-1 8-6 12-14 13" fill="#e5af48" stroke="#17262b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 40c0-18 12-29 25-29s25 11 25 29v6c0 15-11 24-25 24S23 61 23 46Z" fill="#f4c75b" stroke="#17262b" stroke-width="2.5"/>
+  <path d="M30 65c-5 4-7 12-4 19 4 4 11 4 16 0M66 65c5 4 7 12 4 19-4 4-11 4-16 0" fill="#0f766e" stroke="#17262b" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M34 67c2 10 7 16 14 16s12-6 14-16" fill="#0f766e" stroke="#17262b" stroke-width="2.5"/>
+  <path d="M38 39h1M57 39h1" fill="none" stroke="#17262b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M43 50c3 3 7 3 10 0" fill="none" stroke="#17262b" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M31 48c2 2 4 2 6 0M59 48c2 2 4 2 6 0" fill="none" stroke="#d95741" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M43 65h10l-2 12h-6Z" fill="#fffaf0" stroke="#17262b" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M45 69h6M45 72h4" fill="none" stroke="#0f766e" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M48 11V6M41 13l-3-4M55 13l3-4" fill="none" stroke="#17262b" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

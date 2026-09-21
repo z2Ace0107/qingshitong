@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qingshitong.local/schemas/mascot-asset-v1.json",
+  "title": "庆事通吉祥物资产清单",
+  "type": "object",
+  "required": ["schema_version", "id", "display_name", "renderer", "source", "canvas", "asset", "fallback", "states"],
+  "properties": {
+    "schema_version": { "const": "mascot-asset-v1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$" },
+    "display_name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "renderer": { "enum": ["svg", "raster", "sprite-sheet", "frame-sequence"] },
+    "source": {
+      "type": "object",
+      "required": ["kind", "license", "attribution"],
+      "properties": {
+        "kind": { "enum": ["original", "licensed", "user_provided"] },
+        "license": { "type": "string", "minLength": 1 },
+        "attribution": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "canvas": {
+      "type": "object",
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "scale": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "asset": { "$ref": "#/$defs/asset" },
+    "fallback": { "$ref": "#/$defs/asset" },
+    "states": { "type": "object", "minProperties": 1, "additionalProperties": { "type": "object" } }
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "required": ["src", "alt", "sha256"],
+      "properties": {
+        "src": { "type": "string", "pattern": "^(?!https?://)(?!data:)(?!javascript:)[^?#]+$" },
+        "alt": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
